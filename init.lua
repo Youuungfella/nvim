@@ -1,3 +1,4 @@
+# text here
 require('keymaps')
 require('autocommands')
 require('plugins')
