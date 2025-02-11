@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
 	  require('plugins.colorscheme')
   end
   } --colorscheme
+  vim.cmd.colorscheme "catppuccin"
 
   use {
   'nvim-lualine/lualine.nvim',
