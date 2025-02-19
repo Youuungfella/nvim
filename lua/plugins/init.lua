@@ -2,18 +2,16 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'neovim/nvim-lspconfig'
 
   use {
-    "williamboman/mason.nvim",
-    config = function()
-	    require("plugins.mason")
-    end,
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-	    require("plugins.mason-lspconfig")
-    end,
-    "neovim/nvim-lspconfig",
+	  'williamboman/mason.nvim',
+	  require('plugins.mason')
   }
+  use {'williamboman/mason-lspconfig.nvim',
+       require('plugins.mason-lspconfig')
+    }
+
 
   use 'mfussenegger/nvim-lsp-compl'
 
@@ -21,15 +19,10 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugink
-  
   use { "catppuccin/nvim",
   as = "catppuccin",
-  config = function()
-	  require('plugins.colorscheme')
-  end
+  require('plugins.colorscheme')
   } --colorscheme
-  vim.cmd.colorscheme "catppuccin"
-
   use {
   'nvim-lualine/lualine.nvim',
   requires = { 'nvim-tree/nvim-web-devicons', opt = true },
