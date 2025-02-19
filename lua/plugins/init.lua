@@ -3,9 +3,19 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'mfussenegger/nvim-lsp-compl'
+  use {
+    "williamboman/mason.nvim",
+    config = function()
+	    require("plugins.mason")
+    end,
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+	    require("plugins.mason-lspconfig")
+    end,
+    "neovim/nvim-lspconfig",
+  }
 
-  use 'neovim/nvim-lspconfig'
+  use 'mfussenegger/nvim-lsp-compl'
 
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
@@ -34,14 +44,14 @@ return require('packer').startup(function(use)
   config = function()
 	  require('plugins.telescope')
   end
-}
+  }
   use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
 	config = function()
 		require('plugins.treesitter')
 	end
-    }
+  }
 
   require('plugins.cmp')
 
