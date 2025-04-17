@@ -1,5 +1,5 @@
-local lspconfig = require("lspconfig")
-require('lspconfig').gopls.setup({
+local lspconfig = require('lspconfig')
+lspconfig.gopls.setup({
 	settings = {
     gopls = {
       analyses = {
@@ -16,3 +16,4 @@ require('lspconfig').gopls.setup({
   },
  })
 lspconfig.lua_ls.setup({})
+lspconfig.pyright.setup({})
