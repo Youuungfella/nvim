@@ -4,11 +4,15 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
   use {
-	  'williamboman/mason.nvim',
-	  require('plugins.mason')
+      'williamboman/mason.nvim',
+      config = function()
+		  require('plugins.mason')
+	  end
   }
   use {'williamboman/mason-lspconfig.nvim',
-       require('plugins.mason-lspconfig')
+       config = function()
+		   require('plugins.mason-lspconfig')
+	   end
     }
   use 'mfussenegger/nvim-lsp-compl'
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
@@ -17,13 +21,15 @@ return require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip' -- Snippets plugink
   use { "catppuccin/nvim",
   as = "catppuccin",
-  require('plugins.colorscheme')
+  config = function()
+	  require('plugins.colorscheme')
+  end
   } --colorscheme
   use {
   'nvim-lualine/lualine.nvim',
   requires = { 'nvim-tree/nvim-web-devicons', opt = true },
   config = function()
-	  require('plugins.lualine')
+      require('plugins.lualine')
   end
   }
   use {
@@ -31,16 +37,23 @@ return require('packer').startup(function(use)
 -- or                            , branch = '0.1.x',
   requires = { {'nvim-lua/plenary.nvim'} },
   config = function()
-	  require('plugins.telescope')
+      require('plugins.telescope')
   end
   }
   use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-	config = function()
-		require('plugins.treesitter')
-	end
+    config = function()
+    	require('plugins.treesitter')
+    end
   }
   require('plugins.cmp')
+  use 'rafamadriz/friendly-snippets'
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require("nvim-autopairs").setup()
+    end
+  }
 end)
 
